@@ -39,6 +39,7 @@ jobs:
           ssh ubuntu@${{ secrets.EC2_HOST }} << EOF
             cd ~/nodejs-shopping
             git pull origin master
+            git reset --hard origin/master
             docker stop shopping-container || true
             docker rm shopping-container || true
             docker build --no-cache -t shopping-app .
